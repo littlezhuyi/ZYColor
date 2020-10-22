@@ -13,9 +13,11 @@
 		25240ABA2537DB51000A7EA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25240AB92537DB51000A7EA4 /* Assets.xcassets */; };
 		25240ABD2537DB51000A7EA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25240ABB2537DB51000A7EA4 /* LaunchScreen.storyboard */; };
 		25240AC02537DB51000A7EA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240ABF2537DB51000A7EA4 /* main.m */; };
-		25240ACD2537DCD0000A7EA4 /* YQQPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240ACC2537DCD0000A7EA4 /* YQQPieChart.m */; };
-		25240AD22537EC1E000A7EA4 /* YQQPieChartCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240AD12537EC1E000A7EA4 /* YQQPieChartCalculate.m */; };
+		25240ACD2537DCD0000A7EA4 /* YQQChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240ACC2537DCD0000A7EA4 /* YQQChart.m */; };
+		25240AD22537EC1E000A7EA4 /* YQQChartCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240AD12537EC1E000A7EA4 /* YQQChartCalculate.m */; };
 		25240AD925381DB2000A7EA4 /* YQQPieChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25240AD825381DB2000A7EA4 /* YQQPieChartModel.m */; };
+		254EDEA72541277100311409 /* UIColor+YQQAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 254EDEA62541277100311409 /* UIColor+YQQAdd.m */; };
+		254F75A325418FA200A22BAF /* YQQCoordinateChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 254F75A225418FA200A22BAF /* YQQCoordinateChartModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,12 +31,16 @@
 		25240ABC2537DB51000A7EA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25240ABE2537DB51000A7EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25240ABF2537DB51000A7EA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		25240ACB2537DCD0000A7EA4 /* YQQPieChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPieChart.h; sourceTree = "<group>"; };
-		25240ACC2537DCD0000A7EA4 /* YQQPieChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPieChart.m; sourceTree = "<group>"; };
-		25240AD02537EC1E000A7EA4 /* YQQPieChartCalculate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPieChartCalculate.h; sourceTree = "<group>"; };
-		25240AD12537EC1E000A7EA4 /* YQQPieChartCalculate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPieChartCalculate.m; sourceTree = "<group>"; };
+		25240ACB2537DCD0000A7EA4 /* YQQChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQChart.h; sourceTree = "<group>"; };
+		25240ACC2537DCD0000A7EA4 /* YQQChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQChart.m; sourceTree = "<group>"; };
+		25240AD02537EC1E000A7EA4 /* YQQChartCalculate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQChartCalculate.h; sourceTree = "<group>"; };
+		25240AD12537EC1E000A7EA4 /* YQQChartCalculate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQChartCalculate.m; sourceTree = "<group>"; };
 		25240AD725381DB1000A7EA4 /* YQQPieChartModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPieChartModel.h; sourceTree = "<group>"; };
 		25240AD825381DB2000A7EA4 /* YQQPieChartModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPieChartModel.m; sourceTree = "<group>"; };
+		254EDEA52541277100311409 /* UIColor+YQQAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+YQQAdd.h"; sourceTree = "<group>"; };
+		254EDEA62541277100311409 /* UIColor+YQQAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YQQAdd.m"; sourceTree = "<group>"; };
+		254F75A125418FA200A22BAF /* YQQCoordinateChartModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQCoordinateChartModel.h; sourceTree = "<group>"; };
+		254F75A225418FA200A22BAF /* YQQCoordinateChartModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQCoordinateChartModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +90,16 @@
 		25240ACA2537DCAE000A7EA4 /* YQQChart */ = {
 			isa = PBXGroup;
 			children = (
-				25240ACB2537DCD0000A7EA4 /* YQQPieChart.h */,
-				25240ACC2537DCD0000A7EA4 /* YQQPieChart.m */,
-				25240AD02537EC1E000A7EA4 /* YQQPieChartCalculate.h */,
-				25240AD12537EC1E000A7EA4 /* YQQPieChartCalculate.m */,
+				25240ACB2537DCD0000A7EA4 /* YQQChart.h */,
+				25240ACC2537DCD0000A7EA4 /* YQQChart.m */,
+				25240AD02537EC1E000A7EA4 /* YQQChartCalculate.h */,
+				25240AD12537EC1E000A7EA4 /* YQQChartCalculate.m */,
 				25240AD725381DB1000A7EA4 /* YQQPieChartModel.h */,
 				25240AD825381DB2000A7EA4 /* YQQPieChartModel.m */,
+				254F75A125418FA200A22BAF /* YQQCoordinateChartModel.h */,
+				254F75A225418FA200A22BAF /* YQQCoordinateChartModel.m */,
+				254EDEA52541277100311409 /* UIColor+YQQAdd.h */,
+				254EDEA62541277100311409 /* UIColor+YQQAdd.m */,
 			);
 			path = YQQChart;
 			sourceTree = "<group>";
@@ -165,10 +175,12 @@
 			files = (
 				25240AB52537DB50000A7EA4 /* ViewController.m in Sources */,
 				25240AAF2537DB50000A7EA4 /* AppDelegate.m in Sources */,
-				25240AD22537EC1E000A7EA4 /* YQQPieChartCalculate.m in Sources */,
-				25240ACD2537DCD0000A7EA4 /* YQQPieChart.m in Sources */,
+				25240AD22537EC1E000A7EA4 /* YQQChartCalculate.m in Sources */,
+				25240ACD2537DCD0000A7EA4 /* YQQChart.m in Sources */,
 				25240AC02537DB51000A7EA4 /* main.m in Sources */,
 				25240AD925381DB2000A7EA4 /* YQQPieChartModel.m in Sources */,
+				254F75A325418FA200A22BAF /* YQQCoordinateChartModel.m in Sources */,
+				254EDEA72541277100311409 /* UIColor+YQQAdd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
