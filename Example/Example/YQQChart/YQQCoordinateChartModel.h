@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *values;
 // 颜色
 @property (nonatomic, strong) NSArray *colors;
+// 数据的坐标点
+@property (nonatomic, strong) NSArray *valuePointArray;
 
 @end
 
