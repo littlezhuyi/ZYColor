@@ -13,14 +13,6 @@
 @interface YQQChart ()
 
 @property (nonatomic, assign) UIEdgeInsets chartEdgesInsets;
-// 纵坐标有效长度
-@property (nonatomic, assign) CGFloat y_length;
-// 横坐标有效长度
-@property (nonatomic, assign) CGFloat x_length;
-// 纵坐标单元格长度
-@property (nonatomic, assign) CGFloat y_unit_length;
-// 横坐标单元格长度
-@property (nonatomic, assign) CGFloat x_unit_length;
 
 @property (nonatomic, strong) NSArray *verticalTextArray;
 @property (nonatomic, strong) NSArray *horizontalTextArray;
@@ -315,6 +307,38 @@
             inSideShapeLayer.path = inSideBezierPath.CGPath;
             [self.layer addSublayer:inSideShapeLayer];
         }
+    }
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    if (self.type == YQQChartTypeVerticalColumn || self.type == YQQChartTypeVerticalLine) {
+        CGFloat minMargin = CGFLOAT_MAX;
+        NSInteger index = 0;
+        for (NSInteger i = 0; i < self.verticalModelArray.count; i++) {
+            YQQCoordinateChartModel *model = [self.verticalModelArray objectAtIndex:i];
+            CGPoint coordinatePoint = model.coordinatePoint;
+            if (fabs(point.y - coordinatePoint.y) < minMargin) {
+                minMargin = fabs(point.y - coordinatePoint.y);
+                index = i;
+            }
+        }
+        NSLog(@"选中%ld", (long)index);
+    }
+    
+    if (self.type == YQQChartTypeHorizontalLine || self.type == YQQChartTypeHorizontalColumn) {
+        CGFloat minMargin = CGFLOAT_MAX;
+        NSInteger index = 0;
+        for (NSInteger i = 0; i < self.horizontalModelArray.count; i++) {
+            YQQCoordinateChartModel *model = [self.horizontalModelArray objectAtIndex:i];
+            CGPoint coordinatePoint = model.coordinatePoint;
+            if (fabs(point.x - coordinatePoint.x) < minMargin) {
+                minMargin = fabs(point.x - coordinatePoint.x);
+                index = i;
+            }
+        }
+        NSLog(@"选中%ld", (long)index);
     }
 }
 
