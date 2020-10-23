@@ -8,7 +8,7 @@
 #import "ViewController.h"
 #import "YQQChart.h"
 
-@interface ViewController ()
+@interface ViewController () <YQQChartDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -35,16 +35,59 @@
     YQQChart *chart = [[YQQChart alloc] initWithFrame:CGRectMake(0, offset, [UIScreen mainScreen].bounds.size.width, 300)];
     chart.backgroundColor = [UIColor whiteColor];
     chart.type = type;
-    chart.colors = @[[UIColor colorOfHex:0x9270CA alpha:1], [UIColor colorOfHex:0xEB7E65 alpha:1], [UIColor colorOfHex:0x359BEE alpha:1], [UIColor colorOfHex:0x7585A2 alpha:1], [UIColor colorOfHex:0x1ACB97 alpha:1], [UIColor colorOfHex:0xF3B545 alpha:1]];
+    chart.delegate = self;
+    chart.colors = @[
+        [UIColor colorOfHex:0x9270CA alpha:1],
+        [UIColor colorOfHex:0xEB7E65 alpha:1],
+        [UIColor colorOfHex:0x359BEE alpha:1],
+        [UIColor colorOfHex:0x7585A2 alpha:1],
+        [UIColor colorOfHex:0x1ACB97 alpha:1],
+        [UIColor colorOfHex:0xF3B545 alpha:1]
+    ];
     
     chart.values = @[
-    @[@100, @230, @230, @140, @550, @680],
-    @[@730, @180, @950, @100, @610, @920],
-    @[@130, @240, @50, @560, @70, @980],
-    @[@90, @500, @210, @320, @230, @40],
-    @[@250, @60, @70, @380, @290, @30],
-    @[@310, @520, @30, @540, @50, @960]
-    
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ]
     ];
     
     chart.coordinateTitles = @[@"北京", @"上海", @"广州", @"深圳", @"郑州", @"杭州"];
@@ -55,20 +98,151 @@
 - (void)pie {
     YQQChart *chart = [[YQQChart alloc] initWithFrame:CGRectMake(0, 1300, [UIScreen mainScreen].bounds.size.width, 300)];
     chart.backgroundColor = [UIColor whiteColor];
+    chart.delegate = self;
     chart.colors = @[
-    @[[UIColor colorOfHex:0x9270CA alpha:1], [UIColor colorOfHex:0xEB7E65 alpha:1], [UIColor colorOfHex:0x359BEE alpha:1], [UIColor colorOfHex:0x7585A2 alpha:1], [UIColor colorOfHex:0x1ACB97 alpha:1], [UIColor colorOfHex:0xF3B545 alpha:1]],
-    @[[UIColor colorOfHex:0x9270CA alpha:1], [UIColor colorOfHex:0xEB7E65 alpha:1], [UIColor colorOfHex:0x359BEE alpha:1], [UIColor colorOfHex:0x7585A2 alpha:1], [UIColor colorOfHex:0x1ACB97 alpha:1], [UIColor colorOfHex:0xF3B545 alpha:1]]
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0xEB7E65 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x359BEE alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x7585A2 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0xF3B545 alpha:1],
+            [UIColor colorOfHex:0xF3B545 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0xEB7E65 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x359BEE alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x7585A2 alpha:1]
+        ]
     ];
-    chart.values = @[@[@10, @20, @30, @40, @50, @60], @[@70, @80, @90, @100, @110, @120]];
+    chart.values = @[
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000),
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ],
+        @[
+            @(arc4random() % 1000)
+        ]
+    ];
     chart.pieTitles = @[
-    @[@"车速通&以租代购", @"整备", @"网约车", @"约车", @"二手车", @"商务车队 待租"],
-    @[@"新能源", @"短租 待租", @"短租 在租", @"长租 待租", @"长租 在租", @"其他"]
+        @[
+            @"一"
+        ],
+        @[
+            @"二"
+        ],
+        @[
+            @"三"
+        ],
+        @[
+            @"四"
+        ],
+        @[
+            @"五"
+        ],
+        @[
+            @"六",
+            @"七"
+        ],
+        @[
+            @"八"
+        ],
+        @[
+            @"九"
+        ],
+        @[
+            @"十"
+        ],
+        @[
+            @"十一"
+        ]
     ];
     chart.startAngle = - M_PI_2;
     chart.radian = M_PI * 2;
     chart.radius = 70;
     chart.insideRadius = 40;
     [self.scrollView addSubview:chart];
+}
+
+- (void)chart:(YQQChart *)chart didSelectIndex:(NSInteger)index {
+    if (chart.type == YQQChartTypePie) {
+        chart.values = @[
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000),
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ],
+            @[
+                @(arc4random() % 1000)
+            ]
+        ];
+        [chart setNeedsLayout];
+        [chart layoutIfNeeded];
+    }
 }
 
 @end

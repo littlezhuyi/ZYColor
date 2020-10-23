@@ -20,12 +20,23 @@
 @property (nonatomic, strong) NSMutableArray *verticalModelArray;
 @property (nonatomic, strong) NSMutableArray *horizontalModelArray;
 
+@property (nonatomic, strong) NSMutableArray *labelArray;
+@property (nonatomic, strong) NSMutableArray *layerArray;
+
 @end
 
 @implementation YQQChart
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    for (UILabel *label in self.labelArray) {
+        [label removeFromSuperview];
+    }
+    for (CALayer *layer in self.layerArray) {
+        [layer removeFromSuperlayer];
+    }
+    [self.labelArray removeAllObjects];
+    [self.layerArray removeAllObjects];
     if (self.type == YQQChartTypePie) {
         [self pie];
     } else {
@@ -146,6 +157,7 @@
     coordinateShapeLayer.fillColor = [UIColor whiteColor].CGColor;
     coordinateShapeLayer.borderWidth = 1.0;
     [self.layer addSublayer:coordinateShapeLayer];
+    [self.layerArray addObject:coordinateShapeLayer];
     
     NSMutableArray *dotPointArray = [NSMutableArray array];
     for (NSInteger i = 0; i < self.verticalModelArray.count; i++) {
@@ -160,6 +172,7 @@
         shapeLayer.fillColor = [UIColor whiteColor].CGColor;
         shapeLayer.borderWidth = 1.0;
         [self.layer addSublayer:shapeLayer];
+        [self.layerArray addObject:shapeLayer];
         
         UILabel *label = [[UILabel alloc] initWithFrame:model.labelFrame];
         label.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
@@ -167,6 +180,7 @@
         label.textAlignment = NSTextAlignmentRight;
         label.text = model.text;
         [self addSubview:label];
+        [self.labelArray addObject:label];
         
         if (self.type == YQQChartTypeVerticalLine) {
             [dotPointArray addObject:[model.valuePointArray lastObject]];
@@ -187,6 +201,7 @@
                 lineShapeLayer.path = lineBezierPath.CGPath;
                 lineShapeLayer.strokeColor = [[model.colors objectAtIndex:j] CGColor];
                 [self.layer addSublayer:lineShapeLayer];
+                [self.layerArray addObject:lineShapeLayer];
                 lastPoint = point;
             }
         }
@@ -204,12 +219,14 @@
         shapeLayer.fillColor = [UIColor whiteColor].CGColor;
         shapeLayer.borderWidth = 1.0;
         [self.layer addSublayer:shapeLayer];
+        [self.layerArray addObject:shapeLayer];
         
         UILabel *label = [[UILabel alloc] initWithFrame:model.labelFrame];
         label.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
         label.textColor = [UIColor colorOfHex:0xC8C8C8 alpha:1];
         label.text = model.text;
         [self addSubview:label];
+        [self.labelArray addObject:label];
         
         if (self.type == YQQChartTypeHorizontalLine) {
             [dotPointArray addObject:[model.valuePointArray lastObject]];
@@ -230,6 +247,7 @@
                 lineShapeLayer.path = lineBezierPath.CGPath;
                 lineShapeLayer.strokeColor = [[model.colors objectAtIndex:j] CGColor];
                 [self.layer addSublayer:lineShapeLayer];
+                [self.layerArray addObject:lineShapeLayer];
                 lastPoint = point;
             }
         }
@@ -250,6 +268,7 @@
     shapeLayer.strokeColor = [UIColor colorOfHex:0x40B492 alpha:1.0].CGColor;
     shapeLayer.lineWidth = 1;
     [self.layer addSublayer:shapeLayer];
+    [self.layerArray addObject:shapeLayer];
     
     // 绘制点
     for (NSInteger i = 0; i < pointArray.count; i++) {
@@ -261,6 +280,7 @@
         layer.strokeColor = [UIColor colorOfHex:0x60A6DF alpha:1.0].CGColor;
         layer.fillColor = self.backgroundColor.CGColor;
         [self.layer addSublayer:layer];
+        [self.layerArray addObject:layer];
     }
 }
 
@@ -281,6 +301,7 @@
         outSideShapeLayer.fillColor = model.color.CGColor;
         outSideShapeLayer.path = outSideBezierPath.CGPath;
         [self.layer addSublayer:outSideShapeLayer];
+        [self.layerArray addObject:outSideShapeLayer];
         
         UIBezierPath *lineBezierpath = [UIBezierPath bezierPath];
         [lineBezierpath moveToPoint:model.intersectionPoint];
@@ -292,11 +313,13 @@
         lineLayer.path = lineBezierpath.CGPath;
         lineLayer.lineDashPattern = @[@(2.0), @(1.0)];
         [self.layer addSublayer:lineLayer];
+        [self.layerArray addObject:lineLayer];
         
         UILabel *label = [[UILabel alloc] initWithFrame:model.titleRect];
         label.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
         label.text = [NSString stringWithFormat:@"%@ %ld", model.title, (long)model.number.integerValue];
         [self addSubview:label];
+        [self.labelArray addObject:label];
         
         if (j == modelValues.count - 1) {
             UIBezierPath *inSideBezierPath = [UIBezierPath bezierPathWithArcCenter:model.center radius:self.insideRadius startAngle:self.startAngle endAngle:self.startAngle + self.radian clockwise:YES];
@@ -306,6 +329,7 @@
             inSideShapeLayer.fillColor = [UIColor whiteColor].CGColor;
             inSideShapeLayer.path = inSideBezierPath.CGPath;
             [self.layer addSublayer:inSideShapeLayer];
+            [self.layerArray addObject:inSideShapeLayer];
         }
     }
 }
@@ -313,9 +337,9 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
+    NSInteger index = 0;
     if (self.type == YQQChartTypeVerticalColumn || self.type == YQQChartTypeVerticalLine) {
         CGFloat minMargin = CGFLOAT_MAX;
-        NSInteger index = 0;
         for (NSInteger i = 0; i < self.verticalModelArray.count; i++) {
             YQQCoordinateChartModel *model = [self.verticalModelArray objectAtIndex:i];
             CGPoint coordinatePoint = model.coordinatePoint;
@@ -329,7 +353,6 @@
     
     if (self.type == YQQChartTypeHorizontalLine || self.type == YQQChartTypeHorizontalColumn) {
         CGFloat minMargin = CGFLOAT_MAX;
-        NSInteger index = 0;
         for (NSInteger i = 0; i < self.horizontalModelArray.count; i++) {
             YQQCoordinateChartModel *model = [self.horizontalModelArray objectAtIndex:i];
             CGPoint coordinatePoint = model.coordinatePoint;
@@ -340,6 +363,23 @@
         }
         NSLog(@"选中%ld", (long)index);
     }
+    if ([self.delegate respondsToSelector:@selector(chart:didSelectIndex:)]) {
+        [self.delegate chart:self didSelectIndex:index];
+    }
+}
+
+- (NSMutableArray *)labelArray {
+    if (!_labelArray) {
+        _labelArray = [NSMutableArray array];
+    }
+    return _labelArray;
+}
+
+- (NSMutableArray *)layerArray {
+    if (!_layerArray) {
+        _layerArray = [NSMutableArray array];;
+    }
+    return _layerArray;
 }
 
 @end

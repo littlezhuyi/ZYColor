@@ -7,6 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColor+YQQAdd.h"
+@class YQQChart;
+
+@protocol YQQChartDelegate <NSObject>
+
+@optional
+- (void)chart:(YQQChart *_Nullable)chart didSelectIndex:(NSInteger)index;
+
+@end
 
 typedef NS_ENUM(NSUInteger, YQQChartType) {
     YQQChartTypePie, // 扇形图
@@ -19,6 +27,8 @@ typedef NS_ENUM(NSUInteger, YQQChartType) {
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YQQChart : UIControl
+
+@property (nonatomic, weak) id<YQQChartDelegate> delegate;
 
 @property (nonatomic, assign) YQQChartType type;
 
