@@ -98,7 +98,7 @@
                 lastPoint = point;
             }
             model.valuePointArray = valuePointArray;
-            model.colors = self.colors;
+            model.colors = self.coordinateColors;
             [self.horizontalModelArray addObject:model];
         }
     } else {
@@ -139,7 +139,7 @@
                 lastPoint = point;
             }
             model.valuePointArray = valuePointArray;
-            model.colors = self.colors;
+            model.colors = self.coordinateColors;
             [self.verticalModelArray addObject:model];
         }
     }
@@ -291,7 +291,7 @@
                                                                    radian:self.radian
                                                                 pieTitles:self.pieTitles
                                                                 pieValues:self.values
-                                                                pieColors:self.colors];
+                                                                pieColors:self.pieColors];
     for (NSInteger j = 0; j < modelValues.count; j++) {
         YQQPieChartModel *model = [modelValues objectAtIndex:j];
         UIBezierPath *outSideBezierPath = [UIBezierPath bezierPathWithArcCenter:model.center radius:self.radius startAngle:model.startAngle endAngle:model.endAngle clockwise:YES];

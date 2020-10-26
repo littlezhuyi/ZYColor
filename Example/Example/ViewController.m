@@ -36,7 +36,7 @@
     chart.backgroundColor = [UIColor whiteColor];
     chart.type = type;
     chart.delegate = self;
-    chart.colors = @[
+    chart.coordinateColors = @[
         [UIColor colorOfHex:0x9270CA alpha:1],
         [UIColor colorOfHex:0xEB7E65 alpha:1],
         [UIColor colorOfHex:0x359BEE alpha:1],
@@ -99,7 +99,7 @@
     YQQChart *chart = [[YQQChart alloc] initWithFrame:CGRectMake(0, 1300, [UIScreen mainScreen].bounds.size.width, 300)];
     chart.backgroundColor = [UIColor whiteColor];
     chart.delegate = self;
-    chart.colors = @[
+    chart.pieColors = @[
         @[
             [UIColor colorOfHex:0x9270CA alpha:1]
         ],
