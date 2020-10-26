@@ -82,7 +82,7 @@
     NSString *newTitle = [NSString stringWithFormat:@"%@ %ld", _title, (long)_number.integerValue];
     CGRect newTitleRect = [newTitle boundingRectWithSize:CGSizeMake(MAXFLOAT, _titleLabelHeight) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:10]} context:nil];
     
-    if (_joinPoint.x >= _center.x) {
+    if (_middleAngle >= -M_PI / 2.0 && _middleAngle <= M_PI / 2) {
         _capPoint = CGPointMake(_joinPoint.x + _horizontalLineLength, _joinPoint.y);
         _titleRect = CGRectMake(_joinPoint.x + _horizontalLineLength + _margin, _joinPoint.y - newTitleRect.size.height / 2.0, newTitleRect.size.width, newTitleRect.size.height);
     } else {

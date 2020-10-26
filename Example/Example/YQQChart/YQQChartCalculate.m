@@ -121,18 +121,14 @@
             CGFloat intersectionY = center.y + sin(model.middleAngle) * radius;
             model.intersectionPoint = CGPointMake(intersectionX, intersectionY);
             
-            if (model.intersectionPoint.x > model.center.x) {
-                if (model.intersectionPoint.y > model.center.y) {
-                    model.quadrant = YQQPieChartModelQuadrantSecond;
-                } else {
-                    model.quadrant = YQQPieChartModelQuadrantFirst;
-                }
+            if (model.middleAngle >= -M_PI / 2.0 && model.middleAngle <= 0) {
+                model.quadrant = YQQPieChartModelQuadrantFirst;
+            } else if (model.middleAngle > 0 && model.middleAngle <= M_PI / 2) {
+                model.quadrant = YQQPieChartModelQuadrantSecond;
+            } else if (model.middleAngle > M_PI / 2 && model.middleAngle <= M_PI) {
+                model.quadrant = YQQPieChartModelQuadrantThird;
             } else {
-                if (model.intersectionPoint.y < model.center.y) {
-                    model.quadrant = YQQPieChartModelQuadrantFourth;
-                } else {
-                    model.quadrant = YQQPieChartModelQuadrantThird;
-                }
+                model.quadrant = YQQPieChartModelQuadrantFourth;
             }
                         
             CGFloat joinX = center.x + cos(model.middleAngle) * (radius + lineLength);
