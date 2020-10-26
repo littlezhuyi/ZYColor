@@ -47,9 +47,13 @@
             }
         } else if (self.quadrant == YQQPieChartModelQuadrantSecond) {
             if (self.lastModel.quadrant == YQQPieChartModelQuadrantFirst) {
-                _joinPoint = CGPointMake(joinPoint.x, joinPoint.y + _increment);
+                if (fabs(joinPoint.y - self.lastModel.joinPoint.y) < _increment) {
+                    _joinPoint = CGPointMake(joinPoint.x, joinPoint.y + _increment);
+                } else {
+                    _joinPoint = joinPoint;
+                }
             } else {
-                if (fabs(joinPoint.y - self.lastModel.joinPoint.y) < _increment ||(fabs(joinPoint.y - self.lastModel.joinPoint.y) > _increment && joinPoint.y < self.lastModel.joinPoint.y)) {
+                if (fabs(joinPoint.y - self.lastModel.joinPoint.y) < _increment || (fabs(joinPoint.y - self.lastModel.joinPoint.y) > _increment && joinPoint.y < self.lastModel.joinPoint.y)) {
                     _joinPoint = CGPointMake(joinPoint.x, self.lastModel.joinPoint.y + _increment);
                 } else {
                     _joinPoint = joinPoint;
@@ -68,7 +72,11 @@
             }
         } else {
             if (self.lastModel.quadrant == YQQPieChartModelQuadrantThird) {
-                _joinPoint = CGPointMake(joinPoint.x, joinPoint.y - _increment);
+                if (fabs(joinPoint.y - self.lastModel.joinPoint.y) < _increment) {
+                    _joinPoint = CGPointMake(joinPoint.x, joinPoint.y - _increment);
+                } else {
+                    _joinPoint = joinPoint;
+                }
             } else {
                 if (fabs(joinPoint.y - self.lastModel.joinPoint.y) < _increment || (fabs(joinPoint.y - self.lastModel.joinPoint.y) > _increment && joinPoint.y > self.lastModel.joinPoint.y)) {
                     _joinPoint = CGPointMake(joinPoint.x, self.lastModel.joinPoint.y - _increment);
