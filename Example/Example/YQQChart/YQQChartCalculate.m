@@ -106,7 +106,11 @@
             model.percent = value.floatValue / sum;
             model.radian = radian * model.percent;
             if (lastModel) {
-                model.startAngle = lastModel.endAngle;
+                if (CGColorEqualToColor(model.color.CGColor, model.lastModel.color.CGColor)) {
+                    model.startAngle = lastModel.endAngle + M_PI / 180.0;
+                } else {
+                    model.startAngle = lastModel.endAngle;
+                }
             } else {
                 model.startAngle = startAngle;
             }
