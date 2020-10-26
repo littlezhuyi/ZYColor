@@ -309,7 +309,7 @@
         [lineBezierpath addLineToPoint:model.capPoint];
         CAShapeLayer *lineLayer = [CAShapeLayer layer];
         lineLayer.strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.45].CGColor;
-        lineLayer.fillColor = [UIColor whiteColor].CGColor;
+        lineLayer.fillColor = [UIColor clearColor].CGColor;
         lineLayer.path = lineBezierpath.CGPath;
         lineLayer.lineDashPattern = @[@(2.0), @(1.0)];
         [self.layer addSublayer:lineLayer];

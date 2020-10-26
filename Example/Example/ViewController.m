@@ -240,6 +240,7 @@
                 @(arc4random() % 1000)
             ]
         ];
+        NSLog(@"%@", chart.values);
         [chart setNeedsLayout];
         [chart layoutIfNeeded];
     }

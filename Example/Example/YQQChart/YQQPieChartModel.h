@@ -7,6 +7,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, YQQPieChartModelQuadrant) {
+    YQQPieChartModelQuadrantFirst,
+    YQQPieChartModelQuadrantSecond,
+    YQQPieChartModelQuadrantThird,
+    YQQPieChartModelQuadrantFourth
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YQQPieChartModel : NSObject
@@ -36,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat endAngle;
 // 原点
 @property (nonatomic, assign) CGPoint center;
+// 上一个model
+@property (nonatomic, weak) YQQPieChartModel *lastModel;
+// 在第几象限内
+@property (nonatomic, assign) YQQPieChartModelQuadrant quadrant;
 
 @end
 
