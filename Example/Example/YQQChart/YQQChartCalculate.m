@@ -18,7 +18,10 @@
             maxTitleWidth = titleWidth;
         }
     }
-    return maxTitleWidth + 30;
+    if (maxTitleWidth > 50) {
+        maxTitleWidth = 50;
+    }
+    return maxTitleWidth;
 }
 
 // 计算文字宽度

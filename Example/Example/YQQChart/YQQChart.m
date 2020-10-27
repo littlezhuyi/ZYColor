@@ -61,7 +61,7 @@
                              [NSString stringWithFormat:@"%ld", average * 5], nil];
     
     if (self.type == YQQChartTypeHorizontalColumn || self.type == YQQChartTypeHorizontalLine) {
-        left = [YQQChartCalculate calculateMaxWidthWithTitles:averageArray];
+        left = [YQQChartCalculate calculateMaxWidthWithTitles:averageArray] + 20;
         self.chartEdgesInsets = UIEdgeInsetsMake(top, left, bottom, right);
         self.verticalTextArray = averageArray;
         self.horizontalTextArray = self.coordinateTitles;
@@ -74,7 +74,7 @@
             YQQCoordinateChartModel *model = [YQQCoordinateChartModel new];
             model.coordinatePoint = CGPointMake(self.chartEdgesInsets.left, self.frame.size.height - self.chartEdgesInsets.bottom - verticalUnitLength * i);
             model.text = [self.verticalTextArray objectAtIndex:i];
-            model.labelFrame = CGRectMake(0, model.coordinatePoint.y - 7, self.chartEdgesInsets.left - 10, 14);
+            model.labelFrame = CGRectMake(10, model.coordinatePoint.y - 7, self.chartEdgesInsets.left - 20, 14);
             [self.verticalModelArray addObject:model];
         }
         // X轴伸出的长度
@@ -83,6 +83,9 @@
         self.horizontalModelArray = [NSMutableArray array];
         for (NSInteger i = 0; i < self.horizontalTextArray.count; i++) {
             CGFloat width = [YQQChartCalculate calculateTextWidth:[self.horizontalTextArray objectAtIndex:i] font:[UIFont fontWithName:@"PingFangSC-Regular" size:10]];
+            if (width > 50) {
+                width = 50;
+            }
             
             YQQCoordinateChartModel *model = [YQQCoordinateChartModel new];
             model.coordinatePoint =  CGPointMake(self.chartEdgesInsets.left + horizontalUnitLenth * i + horizontalIncrement, self.frame.size.height - self.chartEdgesInsets.bottom);
@@ -102,7 +105,7 @@
             [self.horizontalModelArray addObject:model];
         }
     } else {
-        left = [YQQChartCalculate calculateMaxWidthWithTitles:self.coordinateTitles];
+        left = [YQQChartCalculate calculateMaxWidthWithTitles:self.coordinateTitles] + 20;
         self.chartEdgesInsets = UIEdgeInsetsMake(top, left, bottom, right);
         self.verticalTextArray = self.coordinateTitles;
         self.horizontalTextArray = averageArray;
@@ -128,7 +131,7 @@
             YQQCoordinateChartModel *model = [YQQCoordinateChartModel new];
             model.coordinatePoint = CGPointMake(self.chartEdgesInsets.left, self.frame.size.height - self.chartEdgesInsets.bottom - vertivalUnitLenth * i - verticalOffsetY);
             model.text = [self.verticalTextArray objectAtIndex:i];
-            model.labelFrame = CGRectMake(0, model.coordinatePoint.y - 7, self.chartEdgesInsets.left - 10, 14);
+            model.labelFrame = CGRectMake(10, model.coordinatePoint.y - 7, self.chartEdgesInsets.left - 20, 14);
             model.values = [self.values objectAtIndex:i];
             NSMutableArray *valuePointArray = [NSMutableArray array];
             CGPoint lastPoint = model.coordinatePoint;
