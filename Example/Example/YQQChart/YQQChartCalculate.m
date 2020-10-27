@@ -82,7 +82,7 @@
     CGFloat lineLength = 10;
     
     // 扇形原点
-    CGPoint center = CGPointMake(size.width / 2.0, size.height / 2.0);
+    CGPoint center = CGPointMake(0, 0);
     
     NSMutableArray *modelValues = [NSMutableArray array];
     YQQPieChartModel *lastModel;
@@ -137,6 +137,36 @@
             
             lastModel = model;
         }
+    }
+    
+    CGFloat maxY = 0;
+    CGFloat minY = CGFLOAT_MAX;
+    CGFloat maxX = 0;
+    CGFloat minX = CGFLOAT_MAX;
+    for (YQQPieChartModel *model in modelValues) {
+        if (model.joinPoint.y > maxY) {
+            maxY = model.joinPoint.y;
+        }
+        if (model.joinPoint.y < minY) {
+            minY = model.joinPoint.y;
+        }
+        if (model.joinPoint.x > maxX) {
+            maxX = model.joinPoint.x;
+        }
+        if (model.joinPoint.x < minX) {
+            minX = model.joinPoint.x;
+        }
+    }
+        
+    CGFloat minOriginY = (size.height - (maxY - minY)) / 2.0;
+    CGFloat minOriginX = (size.width - (maxX - minX)) / 2.0;
+    CGFloat offsetY = minOriginY - minY;
+    CGFloat offsetX = minOriginX - minX;
+    
+    for (YQQPieChartModel *model in modelValues) {
+        model.intersectionPoint = CGPointMake(model.intersectionPoint.x + offsetX, model.intersectionPoint.y + offsetY);
+        model.joinPoint = CGPointMake(model.joinPoint.x + offsetX, model.joinPoint.y + offsetY);
+        model.center = CGPointMake(model.center.x + offsetX, model.center.y + offsetY);
     }
     return modelValues;
 }
