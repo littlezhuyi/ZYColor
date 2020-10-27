@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 坐标系
 @property (nonatomic, strong) NSArray<NSString *> *coordinateTitles;
-@property (nonatomic, strong) NSArray<UIColor *> *coordinateColors;
+@property (nonatomic, strong) NSArray<NSArray<UIColor *> *> *coordinateColors;
 
 // 饼状图
 @property (nonatomic, strong) NSArray<NSArray<NSString *> *> *pieTitles;

@@ -98,7 +98,7 @@
                 lastPoint = point;
             }
             model.valuePointArray = valuePointArray;
-            model.colors = self.coordinateColors;
+            model.colors = [self.coordinateColors objectAtIndex:i];
             [self.horizontalModelArray addObject:model];
         }
     } else {
@@ -139,7 +139,7 @@
                 lastPoint = point;
             }
             model.valuePointArray = valuePointArray;
-            model.colors = self.coordinateColors;
+            model.colors = [self.coordinateColors objectAtIndex:i];
             [self.verticalModelArray addObject:model];
         }
     }

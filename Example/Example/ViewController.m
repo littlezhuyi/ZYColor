@@ -37,12 +37,48 @@
     chart.type = type;
     chart.delegate = self;
     chart.coordinateColors = @[
-        [UIColor colorOfHex:0x9270CA alpha:1],
-        [UIColor colorOfHex:0xEB7E65 alpha:1],
-        [UIColor colorOfHex:0x359BEE alpha:1],
-        [UIColor colorOfHex:0x7585A2 alpha:1],
-        [UIColor colorOfHex:0x1ACB97 alpha:1],
-        [UIColor colorOfHex:0xF3B545 alpha:1]
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ],
+        @[
+            [UIColor colorOfHex:0x9270CA alpha:1],
+            [UIColor colorOfHex:0xEB7E65 alpha:1],
+            [UIColor colorOfHex:0x359BEE alpha:1],
+            [UIColor colorOfHex:0x7585A2 alpha:1],
+            [UIColor colorOfHex:0x1ACB97 alpha:1]
+        ]
     ];
     
     chart.values = @[
