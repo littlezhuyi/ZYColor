@@ -13,6 +13,7 @@
 @interface YQQChart ()
 
 @property (nonatomic, assign) UIEdgeInsets chartEdgesInsets;
+@property (nonatomic, assign) CGPoint nearestItemPoint;
 
 @property (nonatomic, strong) NSArray *verticalTextArray;
 @property (nonatomic, strong) NSArray *horizontalTextArray;
@@ -43,6 +44,8 @@
         [self refreshState];
     }
 }
+
+#pragma mark - 画柱状图
 
 - (void)refreshState {
     CGFloat left = 0;
@@ -287,6 +290,8 @@
     }
 }
 
+#pragma mark - 画饼状图
+
 - (void)pie {
     NSMutableArray *modelValues = [YQQChartCalculate calculatePieWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height)
                                                                    radius:self.radius
@@ -337,6 +342,8 @@
     }
 }
 
+#pragma mark - 点击事件
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
@@ -351,7 +358,8 @@
                 index = i;
             }
         }
-        NSLog(@"选中%ld", (long)index);
+        YQQCoordinateChartModel *model = [self.verticalModelArray objectAtIndex:index];
+        self.nearestItemPoint = model.coordinatePoint;
     }
     
     if (self.type == YQQChartTypeHorizontalLine || self.type == YQQChartTypeHorizontalColumn) {
@@ -364,7 +372,8 @@
                 index = i;
             }
         }
-        NSLog(@"选中%ld", (long)index);
+        YQQCoordinateChartModel *model = [self.horizontalModelArray objectAtIndex:index];
+        self.nearestItemPoint = model.coordinatePoint;
     }
     if ([self.delegate respondsToSelector:@selector(chart:didSelectIndex:)]) {
         [self.delegate chart:self didSelectIndex:index];

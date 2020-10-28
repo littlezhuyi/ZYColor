@@ -32,16 +32,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) YQQChartType type;
 
+@property (nonatomic, strong) NSArray<NSArray<NSNumber *> *> *values;
+
 // 坐标系
 @property (nonatomic, strong) NSArray<NSString *> *coordinateTitles;
 @property (nonatomic, strong) NSArray<NSArray<UIColor *> *> *coordinateColors;
+// 坐标系属性
+@property (nonatomic, assign, readonly) UIEdgeInsets chartEdgesInsets;
+@property (nonatomic, assign, readonly) CGPoint nearestItemPoint;
 
 // 饼状图
 @property (nonatomic, strong) NSArray<NSArray<NSString *> *> *pieTitles;
 @property (nonatomic, strong) NSArray<NSArray<UIColor *> *> *pieColors;
-
-@property (nonatomic, strong) NSArray<NSArray<NSNumber *> *> *values;
-
 // 扇形图属性
 @property (nonatomic, assign) CGFloat startAngle;
 @property (nonatomic, assign) CGFloat radian;
