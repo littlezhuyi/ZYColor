@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 坐标系属性
 @property (nonatomic, assign, readonly) UIEdgeInsets chartEdgesInsets;
 @property (nonatomic, assign, readonly) CGPoint nearestItemPoint;
+@property (nonatomic, copy) NSString *unitString;
 
 // 饼状图
 @property (nonatomic, strong) NSArray<NSArray<NSString *> *> *pieTitles;

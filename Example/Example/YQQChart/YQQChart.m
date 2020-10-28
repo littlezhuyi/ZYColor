@@ -188,6 +188,17 @@
         [self addSubview:label];
         [self.labelArray addObject:label];
         
+        if ((self.type == YQQChartTypeHorizontalLine || self.type == YQQChartTypeHorizontalColumn) && i == self.verticalModelArray.count - 1 && self.unitString) {
+            UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(model.labelFrame.origin.x, model.labelFrame.origin.y - 10, model.labelFrame.size.width, model.labelFrame.size.height)];
+            unitLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:6];
+            unitLabel.textColor = [UIColor colorOfHex:0x5A5A5A alpha:1];
+            unitLabel.textAlignment = NSTextAlignmentRight;
+            unitLabel.text = self.unitString;
+            [unitLabel adjustsFontSizeToFitWidth];
+            [self addSubview:unitLabel];
+            [self.labelArray addObject:unitLabel];
+        }
+        
         if (self.type == YQQChartTypeVerticalLine) {
             [dotPointArray addObject:[model.valuePointArray lastObject]];
             if (i == self.horizontalModelArray.count - 1) {
@@ -233,6 +244,15 @@
         label.text = model.text;
         [self addSubview:label];
         [self.labelArray addObject:label];
+        
+        if ((self.type == YQQChartTypeVerticalLine || self.type == YQQChartTypeVerticalColumn) && i == self.horizontalModelArray.count - 1 && self.unitString) {
+            UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(model.coordinatePoint.x + model.labelFrame.size.width / 2.0, model.labelFrame.origin.y, 40, model.labelFrame.size.height)];
+            unitLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
+            unitLabel.textColor = [UIColor colorOfHex:0xC8C8C8 alpha:1];
+            unitLabel.text = self.unitString;
+            [self addSubview:unitLabel];
+            [self.labelArray addObject:unitLabel];
+        }
         
         if (self.type == YQQChartTypeHorizontalLine) {
             [dotPointArray addObject:[model.valuePointArray lastObject]];

@@ -127,6 +127,7 @@
     ];
     
     chart.coordinateTitles = @[@"北京", @"上海", @"广州", @"深圳", @"郑州", @"杭州"];
+    chart.unitString = @"（万元）";
     
     [self.scrollView addSubview:chart];
 }
